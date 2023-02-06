@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MythGuards.IRepositories;
+using MythGuards.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,9 @@ namespace MythGuards
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<IContractRepository, ContractRepository>();
+
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
