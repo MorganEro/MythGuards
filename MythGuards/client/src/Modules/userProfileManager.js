@@ -1,25 +1,39 @@
 const apiUrl = '/api/UserProfile/';
 
-export const getInstruments = () => {
+export const GetUserProfiles = () => {
   return fetch(apiUrl)
     .then(resp => resp.json());
 };
 
-export const searchInstruments = (criterion) => {
-  return fetch(`${apiUrl}search?q=${criterion}`)
-    .then(resp => resp.json());
-};
-
-export const getInstrument = (id) => {
+export const GetUserProfile= (id) => {
   return fetch(apiUrl + id).then(resp => resp.json());
 };
 
-export const updateInstrument = (instrument) => {
-  return fetch(apiUrl + instrument.id, {
+export const UpdateUserProfile = (userProfile) => {
+  return fetch(apiUrl + userProfile.id, {
     method: 'PUT',
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(instrument)
+    body: JSON.stringify(userProfile)
   });
 };
+export const DeactivateUserProfile = (userProfile) => {
+  return fetch(`${apiUrl}/Deactivate/${userProfile.id}`, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userProfile)
+  });
+};
+export const AddUserProfile = (userProfile) => {
+  return fetch(apiUrl + userProfile.id, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(userProfile)
+  });
+};
+
