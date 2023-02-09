@@ -4,7 +4,7 @@ import { logout } from "../../modules/authManager"
 
 
 
-export const ClientNav = () => {
+export const AdminNav = () => {
 
     // const activeLink = ''
     // const normalLink = ''
@@ -22,7 +22,7 @@ export const ClientNav = () => {
                 <NavLink to="/guardList">Guards</NavLink> 
             </li>
             <li className=""> 
-                <NavLink to="/profile">Profile</NavLink> 
+                <NavLink to="/clientList">ClientList</NavLink> 
             </li>
             <li className="">  
                  <NavLink to="/contracts" >Contracts</NavLink>    

@@ -6,11 +6,11 @@ import { register } from "../modules/authManager";
 export default function Register() {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
   const [displayName, setDisplayName] = useState();
+  const [age, setAge] = useState();
   const [email, setEmail] = useState();
-  const [imageLocation, setImageLocation] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [imageUrl, setImageUrl] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 

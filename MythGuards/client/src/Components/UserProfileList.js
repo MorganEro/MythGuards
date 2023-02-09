@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllUserProfiles } from "../modules/userProfileManager";
 import "./UserProfileList.css"
 
-const UserProfileList = () => {
+export const UserProfileList = () => {
   const [userProfiles, setUserProfiles] = useState([]);
 
     useEffect(() => {
@@ -25,4 +25,3 @@ const UserProfileList = () => {
   );
 }
 
-export default UserProfileList;
