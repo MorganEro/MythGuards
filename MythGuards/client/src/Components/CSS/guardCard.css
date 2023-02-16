@@ -1,0 +1,37 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.profile {
+    background-image:url('img/3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: bold;
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+    border: black solid 4px;
+    padding: 1.5rem;
+    
+    color: rgb(117, 73, 30);
+
+}
+
+.profile_items {
+ columns: 2 40%;
+    
+}
+
+span {
+    color: rgb(116, 41, 6)
+}
+img {
+ width: 30%;
+ height: auto;
+}

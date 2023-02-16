@@ -1,25 +1,34 @@
-import { Route, Routes } from "react-router-dom"
-import { ClientList } from "../clients/ClientList"
-import { ContractList } from "../contracts/ContractList"
-import { GuardList } from "../guards/GuardList copy"
+
+import { Navigate } from 'react-router-dom';
+import {  onLoginStatusChange, Logout } from '../../modules/authManager';
+import { Contracts } from '../contracts/ContractList';
+import { Guards } from "../guards/GuardList";
+import { Clients } from "../clients/ClientList";
+
+
+export const AdminView = () => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+     
+    useEffect(() => {
+        onLoginStatusChange(setIsLoggedIn);
+      }, []);
 
 
 
-export const AdminView= () => {
+    return (
 
-	return (
-	<Routes>
-		<Route path="/" element= {
-			<div>
-				<div>Hello, {`${Admin.DisplayName}`}!</div>
-				<div>&nbsp;</div>	
-			</div>
-		} />
-		<Route path="contracts" element={ <ContractList/> } />
-		<Route path="clientList" element={ <ClientList /> } />
-		<Route path="guardList" element={ <GuardList /> } />
+        <Routes>
+            <Route path="/">
+                <Route index element={isLoggedIn ? < Welcome /> : <Navigate to="login" />}/>
+                <Route path = "contract"  element ={isLoggedIn ? < Contracts /> : <Navigate to="login" />}/>
+                <Route path = "contract/details/:id" element ={isLoggedIn ? <ContractCard/> : <Navigate to="login" />}/>
+                <Route path = "userProfile/guard" element ={isLoggedIn ? < Guards /> : <Navigate to="login" />}/>
+                <Route path = "userProfile/client" element ={isLoggedIn ? < Clients /> : <Navigate to="login" />}/> 
+                <Route path = "userProfile/:id" element ={isLoggedIn ? < UserProfileEdit /> : <Navigate to="login" />}/>
+            </Route>	
+        </Routes>
 
-		
-	</Routes>
-	)
+    )
 }
+

@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { GetContracts } from "../modules/contractManager";
+import { Link } from "react-router-dom";
+import { GetContractsList } from "../../modules/contractManager";
+import "../CSS/contractList.css";
 
 
-
-export const ContractList = () => {
+export const Contracts = () => {
   const [contracts, setContracts] = useState([]);
 
     useEffect(() => {
-        GetContracts()
+        GetContractsList()
             .then(data => {
                 setContracts(data)
             })
     }, []);
-
+//Todo add price total for the contract
   return (
-        <div>
-            {contracts.map(contract => 
-                <div className="contract">
-                    <h4>This Contract Binds {contract.ClientName} with {contract.GuardName} for the agreed upon.</h4>
-                    <div>Terms of Agreement: </div>
-                    <div className="contract_items">Contract Details/Notes: {contract.details}</div>
-                    <div className="contract_items">Service Type : {contract.serviceType}'</div>
-                    <div className="contract_items">Start Of Service Contract: {contract.requestedStartDate}</div>
-                    <div className="contract_items">End Of Service Contract: {contract.requestedEndingDate}'</div>
-                    <div className="contract_items">IsActive : {contract.isActive}'</div>
-                    //Todo add price total for the contract
-                </div>
-                )}
+        <div className="contract_div">
+            {contracts.map((contract) => { 
+                return (
+                    <div className="contracts" key= {contract.id}>
+                            <h5>This Contract Binds {contract.userProfile.displayName} with {contract.guardProfile.displayName} for the agreed upon.</h5>
+                            <div className="contract_items">Start Of Service Contract: {new Date(contract.requestedStartingDate).toDateString()}</div>
+                            <div className="contract_items">End Of Service Contract: {new Date(contract.requestedEndingDate).toDateString()} </div>
+                            <div className="contract_items">IsActive : {contract.isActive.toString()} </div>
+                            <div> 
+                                <Link to={`/contract/details/${contract.id}`}>Click Here for Details</Link>
+                            </div>
+                    </div>
+            )})}
         </div>
     )
 }

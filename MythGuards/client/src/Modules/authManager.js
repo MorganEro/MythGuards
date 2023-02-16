@@ -1,6 +1,5 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-
 const apiUrl = "/api/Userprofile";
 
 const _doesUserExist = (firebaseUserId) => {
@@ -26,8 +25,22 @@ const _saveUser = (userProfile) => {
 };
 
 
+export const thisUser = () => {
+  return getToken().then((token) =>
+    fetch(`${apiUrl}/user`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((resp) => resp.json()),
+  );
+}
+
+
+
 
 export const getToken = () => firebase.auth().currentUser.getIdToken();
+
 
 
 export const login = (email, pw) => {
@@ -37,7 +50,7 @@ export const login = (email, pw) => {
       if (!doesUserExist) {
 
         // If we couldn't find the user in our app's database, we should logout of firebase
-        logout();
+        Logout();
 
         throw new Error("Something's wrong. The user exists in firebase, but not in the application database.");
       }
@@ -48,12 +61,13 @@ export const login = (email, pw) => {
 };
 
 
-export const logout = () => {
+export const Logout = () => {
   firebase.auth().signOut()
+  
 };
 
 
-export const register = (userProfile, password) => {
+export const Register = (userProfile, password) => {
   return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)
     .then((createResponse) => _saveUser({ 
       ...userProfile, 

@@ -1,23 +1,31 @@
-import { Route, Routes } from "react-router-dom"
-import { ContractList } from "../contracts/ContractList"
-import { GuardCard } from "../guards/GuardCard"
+
+import { Navigate } from 'react-router-dom';
+import {  onLoginStatusChange, Logout } from '../../modules/authManager';
+import { Contracts } from '../contracts/ContractList';
 
 
-export const GuardView= () => {
 
-	return (
-	<Routes>
-		<Route path="/" element= {
-			<div>
-				<div>Hello, {`${guard.DisplayName}`}!</div>
-				<div>&nbsp;</div>	
-			</div>
-		} />
-		<Route path="contracts" element={ <ContractList /> } />
-		<Route path="profile" element={ <GuardCard /> } />
-		
+export const GuardView = () => {
 
-		
-	</Routes>
-	)
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+     
+    useEffect(() => {
+        onLoginStatusChange(setIsLoggedIn);
+      }, []);
+
+
+
+    return (
+
+        <Routes>
+            <Route path="/">
+                <Route index element={isLoggedIn ? < Welcome /> : <Navigate to="login" />}/>
+                <Route path = "contract"  element ={isLoggedIn ? < Contracts /> : <Navigate to="login" />}/>
+                <Route path = "contract/details/:id" element ={isLoggedIn ? <ContractCard/> : <Navigate to="login" />}/>
+                <Route path = "userProfile/:id" element ={isLoggedIn ? < UserProfileEdit /> : <Navigate to="login" />}/>
+            </Route>	
+        </Routes>
+
+    )
 }
+

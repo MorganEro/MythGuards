@@ -1,34 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { GetAllUserProfiles } from "../modules/userProfileManager";
-import "./UserProfileList.css"
+import { Link } from "react-router-dom";
+import { GetClientsList} from "../../modules/userProfileManager";
 
-export const ClientList = () => {
-  const [userProfiles, setUserProfiles] = useState([]);
 
+export const Clients = () => {
+  const [clientProfiles, setClientProfiles] = useState([]);
+    
     useEffect(() => {
-        GetAllUserProfiles()
+        GetClientsList ()
             .then(usersData => {
-                setUserProfiles(usersData)
+                setClientProfiles(usersData)
             })
     }, []);
 
   return (
         <div>
-            {userProfiles.map((u) => {
-                if (u.userType  === "Client") {
-                    return (
-                        <div className="profile">
-                            <h4>{u.displayName}</h4>
-                            <img src={u.imageUrl } alt={"Profile Image"}>;</img>
-                            <div className="profile_items">Age : {u.age}'</div>
-                            <div className="profile_items">Email : {u.email}</div>
-                            <div className="profile_items">Phone Number: {u.phoneNumber}'</div>
-                            <div className="profile_items">Join Date: {u.joinDate}</div>
-                        </div>
-                            )
-                    }})
+            {clientProfiles.map(g => 
+  
+                            <div className="profile" key={g.id}>
+                                <div> 
+                                    <Link to={`/userProfile/details/${g.id}`}>{g.displayName}</Link>
+                                </div>
+                                <img src={g.imageUrl } alt={"Profile Image"} />
+                                <div className="profile_items">Age : {g.age}'</div>
+                                <div className="profile_items">Email : {g.email}</div>
+                                <div className="profile_items">Phone Number: {g.phoneNumber}'</div>
+                                <div className="profile_items">Join Date: {new Date(g.joinDate).toDateString()}</div>
+                            </div>
+                    )
             }            
         </div>
     )
 }
+
 

@@ -1,14 +1,25 @@
 import { Link} from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import { logout } from "../../modules/authManager"
-
+import { thisUser, onLoginStatusChange, Logout } from '../../modules/authManager';
 
 
 export const AdminNav = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
+     
+    useEffect(() => {
+        onLoginStatusChange(setIsLoggedIn);
+      }, []);
 
-    // const activeLink = ''
-    // const normalLink = ''
-    //Todo Make links active or inactive
+      useEffect(() => {
+        if (isLoggedIn) {
+          thisUser().then(setUser);
+        } else {
+          setUser(null);
+        }
+      }, [isLoggedIn]);
     
 
 
@@ -22,7 +33,7 @@ export const AdminNav = () => {
                 <NavLink to="/guardList">Guards</NavLink> 
             </li>
             <li className=""> 
-                <NavLink to="/clientList">ClientList</NavLink> 
+                <NavLink to="/profile">Profile</NavLink> 
             </li>
             <li className="">  
                  <NavLink to="/contracts" >Contracts</NavLink>    
@@ -33,4 +44,3 @@ export const AdminNav = () => {
         </ul>
     )
 }
-
