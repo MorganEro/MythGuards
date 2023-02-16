@@ -4,7 +4,7 @@ import { logout } from "../../modules/authManager"
 import { thisUser, onLoginStatusChange, Logout } from '../../modules/authManager';
 
 
-export const ClientNav = () => {
+export const AdminNav = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -44,4 +44,3 @@ export const ClientNav = () => {
         </ul>
     )
 }
-

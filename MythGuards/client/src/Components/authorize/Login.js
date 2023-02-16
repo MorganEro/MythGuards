@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../modules/authManager";
+import { login } from "../../modules/authManager";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Login() {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    login(email, password)
+    login (email, password)
       .then(() => navigate("/"))
       .catch(() => alert("Invalid email or password"));
   };

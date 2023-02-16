@@ -9,16 +9,17 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-import { logout } from '../modules/authManager';
+import { Logout } from "../../modules/authManager";
 
-export default function Header({ isLoggedIn }) {
+export default function Header({ isLoggedIn}) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">Tabloid</NavbarBrand>
+        <NavbarBrand tag={RRNavLink} to="/">MythGuards</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -35,21 +36,21 @@ export default function Header({ isLoggedIn }) {
             {isLoggedIn &&
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/comments">Comments</NavLink>
+                  <NavLink tag={RRNavLink} to="/userProfile/guard">Guards</NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink tag={RRNavLink} to="/tags">Tags</NavLink>
+                <NavLink tag={RRNavLink} to="/contract/create">ContractForm</NavLink>
               </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/profiles">User Profiles</NavLink>
+                  <NavLink tag={RRNavLink} to="/contract" >Contracts</NavLink>
                 </NavItem>
-                <NavLink tag={RRNavLink} to="categories">Category Management</NavLink>
-                  <NavItem>
-                  <NavLink tag={RRNavLink} to="/posts">Posts</NavLink>
+                
+                <NavItem>
+                <NavLink tag={RRNavLink} to="/userProfile/client">Clients</NavLink>
                 </NavItem>
                 <NavItem>
                   <a aria-current="page" className="nav-link"
-                    style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
+                    style={{ cursor: "pointer" }} onClick={Logout}>Logout</a>
                 </NavItem>
                
               </>

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.contractForm {
+    border: rgb(116, 41, 6) solid 2px;
+    border-style: double;
+    outline: 4px solid rgb(116, 41, 6);
+    outline-offset: 15px;
+    background-image: url('img/cetall.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 725px;
+    height: 925px;
+    margin-left: 20vw;
+    margin-top: 10vh;
+    align-content: center;
+    justify-content: center;
+    
+}
+.contract_form {
+    
+    margin: 20px;
+    
+    font-family: 'Charm', cursive;
+    color: hwb(38 14% 73% / 0.97);
+    text-align: center;
+}
+
+
+.contract_form_terms_term {
+    margin-bottom: 15px;
+   
+}
+
+.contract_form_h2{
+    text-align: center;
+    color: rgb(116, 41, 6);
+    padding-top: 50px;
+
+    
+}
+
+
+p {
+    text-indent: 1em;
+}
+.contract_field_input{
+    border-width: 1px;
+}
+a {
+    text-decoration: none;
+}
+
+.contract_form_back {
+    float: left;
+    margin-left: 30px;
+    margin-top: 5px;
+    background-color: antiquewhite;
+    border: 2px rgb(116, 41, 6) solid;
+    width: 55px;
+    text-align: center;
+    box-shadow: 1px 1px 2px rgb(64, 47, 46);
+}
+.contract_form_submit {
+    float: right;
+    margin-right: 30px;
+    margin-top: 5px;
+    background-color: antiquewhite;
+    border: 2px rgb(116, 41, 6) solid;
+    width: 80px;
+    text-align: center;
+    box-shadow: 1px 1px 2px rgb(64, 47, 46);
+}

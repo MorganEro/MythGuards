@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
-import { register } from "../modules/authManager";
+import { register } from "../../modules/authManager";
+
 
 export default function Register() {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
   const [displayName, setDisplayName] = useState();
+  const [age, setAge] = useState();
   const [email, setEmail] = useState();
-  const [imageLocation, setImageLocation] = useState();
+  const [imageUrl, setImageUrl] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [address, setAddress] = useState();
+  const [details, setDetails] = useState();
+  const [joinDate, setJoinDate] = useState();
+  const [userTypeId, setUserTypeId] = useState(); 
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
@@ -20,11 +25,17 @@ export default function Register() {
       alert("Passwords don't match. Do better.");
     } else {
       const userProfile = {
-        firstName,
-        lastName,
         displayName,
-        imageLocation,
+        age,
         email,
+        imageUrl,
+        phoneNumber,
+        address,
+        details,
+        joinDate,
+        userTypeId,
+        password,
+        confirmPassword
       };
       register(userProfile, password).then(() => navigate("/"));
     }
@@ -34,23 +45,7 @@ export default function Register() {
     <Form onSubmit={registerClick}>
       <fieldset>
         <FormGroup>
-          <Label htmlFor="firstName">First Name</Label>
-          <Input
-            id="firstName"
-            type="text"
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="lastName">Last Name</Label>
-          <Input
-            id="lastName"
-            type="text"
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label htmlFor="displayName">Display Name</Label>
+          <Label htmlFor="displayName">DisplayName</Label>
           <Input
             id="displayName"
             type="text"
@@ -58,19 +53,67 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="email">Email</Label>
+          <Label htmlFor="age">Age</Label>
+          <Input
+            id="age"
+            type="number"
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="email">Display Name</Label>
           <Input
             id="email"
-            type="text"
+            type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="imageLocation">Profile Image URL</Label>
+          <Label for="imageUrl">Image Url</Label>
           <Input
-            id="imageLocation"
+            id="imageUrl"
             type="text"
-            onChange={(e) => setImageLocation(e.target.value)}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="JoinDate">JoinDate</Label>
+          <Input
+            id="joinDate"
+            type="date"
+            onChange={(e) => setJoinDate(e.target.value)}
+          />
+        </FormGroup>
+        <Form.Select
+            id="userTypeId"
+            onChange={(e) => setUserTypeId(parseInt(e.target.value))}>
+          <option>UserType</option>
+          <option value="1" disabled >Admin</option>
+          <option value="2">Guard</option>
+          <option value="3">Client</option>
+        </Form.Select>
+        <FormGroup>
+          <Label htmlFor="phoneNumber">Phone Number</Label>
+          <Input
+            id="phoneNumber"
+            type="tel"
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="address">Address</Label>
+          <Input
+            id="address"
+            type="text"
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="details">Details</Label>
+          <Input
+            id="details"
+            type="text"
+            onChange={(e) => setDetails(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
