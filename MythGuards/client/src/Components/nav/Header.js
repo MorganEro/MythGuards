@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
@@ -7,65 +7,76 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
-} from 'reactstrap';
+  NavLink,
+  NavbarText,
+} from "reactstrap";
 import { Logout } from "../../modules/authManager";
 
-export default function Header({ isLoggedIn}) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header({ isLoggedIn, user }) {
   const toggle = () => setIsOpen(!isOpen);
-  
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">MythGuards</NavbarBrand>
+      <Navbar  fixed="top" color="light" light expand="lg">
         <NavbarToggler onClick={toggle} />
+        <NavbarBrand tag={RRNavLink} to="/">
+          MythGuards
+        </NavbarBrand>
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            { /* When isLoggedIn === true, we will render the Home link */}
-            {isLoggedIn &&
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/">Home</NavLink>
-              </NavItem>
-
-            }
-          </Nav>
-
-          <Nav navbar>
-            {isLoggedIn &&
+          <Nav justified navbar>
+            {isLoggedIn && 
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/userProfile/guard">Guards</NavLink>
+                  <NavLink tag={RRNavLink} to="/userProfile/guard">
+                    Guards
+                  </NavLink>
                 </NavItem>
                 <NavItem>
-                <NavLink tag={RRNavLink} to="/contract/create">ContractForm</NavLink>
-              </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/contract" >Contracts</NavLink>
-                </NavItem>
-                
-                <NavItem>
-                <NavLink tag={RRNavLink} to="/userProfile/client">Clients</NavLink>
+                  <NavLink tag={RRNavLink} to="/contract/create">
+                    ContractForm
+                  </NavLink>
                 </NavItem>
                 <NavItem>
-                  <a aria-current="page" className="nav-link"
-                    style={{ cursor: "pointer" }} onClick={Logout}>Logout</a>
+                  <NavLink tag={RRNavLink} to="/contract">
+                    Contracts
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/userProfile/all">
+                    AllUsers
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/userProfile/client">
+                    Clients
+                  </NavLink>
                 </NavItem>
                
+                <NavItem>
+                  <a
+                    aria-current="page"
+                    className="nav-link"
+                    style={{ cursor: "pointer" }}
+                    onClick={Logout}
+                  >
+                    Logout
+                  </a>
+                </NavItem>
+                <NavbarText>
+                    Welcome, {user?.displayName}
+                </NavbarText>
               </>
             }
-            {!isLoggedIn &&
+            {!isLoggedIn && 
               <>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to="/login">Login</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/register">Register</NavLink>
                 </NavItem>
               </>
             }
           </Nav>
+          
         </Collapse>
       </Navbar>
     </div>

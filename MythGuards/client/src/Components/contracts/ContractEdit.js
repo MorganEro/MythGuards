@@ -39,9 +39,9 @@ export const ContractEdit = () => {
             const answer = window.confirm("are you sure?");
                 if (answer) {
                     UpdateContract(contractId, oldContract)
-                    window.confirm("Changes saved to the database.");
+                    window.alert("Changes saved to the database.");
                 } else {
-                    window.confirm("changes did not go through")
+                    window.alert("changes did not go through")
                     console.log("Changes not saved to the database.");
                 }
         
@@ -86,7 +86,7 @@ export const ContractEdit = () => {
                             <select
                                 required autoFocus
                                 className=""
-                                value={oldContract?.serviceTypeId}
+                                value={oldContract?.serviceType?.id}
                                 onChange={
                                     (evt) => {
                                         const copy = {...oldContract}

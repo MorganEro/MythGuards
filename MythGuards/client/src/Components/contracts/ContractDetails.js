@@ -4,7 +4,7 @@ import { GetContractById } from "../../modules/contractManager";
 import "../CSS/contract.css";
 
 
-export const ContractCard = () => {
+export const ContractDetails = () => {
     const { id } = useParams()
     const [contract, setContract] = useState({});
     const navigate = useNavigate()

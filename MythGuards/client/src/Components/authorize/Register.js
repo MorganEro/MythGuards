@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
-import { register } from "../../modules/authManager";
+import { _register } from "../../modules/authManager";
 
 
 export default function Register() {
@@ -22,7 +22,7 @@ export default function Register() {
   const registerClick = (e) => {
     e.preventDefault();
     if (password && password !== confirmPassword) {
-      alert("Passwords don't match. Do better.");
+      alert("Passwords must match");
     } else {
       const userProfile = {
         displayName,
@@ -37,7 +37,7 @@ export default function Register() {
         password,
         confirmPassword
       };
-      register(userProfile, password).then(() => navigate("/"));
+      _register(userProfile, password).then(() => navigate("/"));
     }
   };
 
@@ -61,7 +61,7 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="email">Display Name</Label>
+          <Label htmlFor="email">Email</Label>
           <Input
             id="email"
             type="email"
@@ -84,14 +84,17 @@ export default function Register() {
             onChange={(e) => setJoinDate(e.target.value)}
           />
         </FormGroup>
-        <Form.Select
+        <FormGroup>
+          <Label for="userType">User Type</Label>
+          <Input type="select"
             id="userTypeId"
             onChange={(e) => setUserTypeId(parseInt(e.target.value))}>
-          <option>UserType</option>
-          <option value="1" disabled >Admin</option>
-          <option value="2">Guard</option>
-          <option value="3">Client</option>
-        </Form.Select>
+            <option>UserType</option>
+            <option value="1" disabled >Admin</option>
+            <option value="2">Guard</option>
+            <option value="3">Client</option>
+          </Input>
+        </FormGroup>
         <FormGroup>
           <Label htmlFor="phoneNumber">Phone Number</Label>
           <Input

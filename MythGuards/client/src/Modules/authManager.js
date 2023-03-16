@@ -27,7 +27,7 @@ const _saveUser = (userProfile) => {
 
 export const thisUser = () => {
   return getToken().then((token) =>
-    fetch(`${apiUrl}/user`, {
+    fetch(`${apiUrl}/User`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ export const Logout = () => {
 };
 
 
-export const Register = (userProfile, password) => {
+export const _register = (userProfile, password) => {
   return firebase.auth().createUserWithEmailAndPassword(userProfile.email, password)
     .then((createResponse) => _saveUser({ 
       ...userProfile, 

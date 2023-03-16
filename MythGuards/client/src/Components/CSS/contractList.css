@@ -1,14 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     background-color: rgb(250, 233, 211);
+    margin: 100px !important;
 }
 
 .contract_div {

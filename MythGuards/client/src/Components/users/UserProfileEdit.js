@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UpdateUserProfile } from '../../modules/userProfileManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GetUserProfileById} from '../../modules/userProfileManager';
+import { Modal } from 'reactstrap';
 
 
 
@@ -10,7 +11,7 @@ export const UserProfileEdit = () => {
     const { id } = useParams();
     const userId = parseInt(id);
     const [oldUser, setOldUser] =useState({})
-    const [selectedFile, setSelectedFile] = useState(null);
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -27,10 +28,10 @@ export const UserProfileEdit = () => {
         const answer = window.confirm("Are you sure about these changes?");
                 if (answer) {
                     UpdateUserProfile(userId, oldUser)
-                    window.confirm("Changes Accepted!");
+                    window.alert("Changes Accepted!");
                
                 } else {
-                window.confirm("No changes were made");
+                window.alert("No changes were made");
                 console.log("Changes not saved to the database.");
                 }
         
@@ -40,6 +41,7 @@ export const UserProfileEdit = () => {
 
     return (
         <div className="userProfile_edit">
+            
             <div>&nbsp;</div>
             <form className="userProfile_edit_form">
                 <h2 className='userProfile_edit_h2'>Update Information</h2>

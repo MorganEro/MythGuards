@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 .contractForm {
     border: rgb(116, 41, 6) solid 2px;
     border-style: double;
@@ -15,8 +11,7 @@
     background-position: center;
     width: 725px;
     height: 925px;
-    margin-left: 20vw;
-    margin-top: 10vh;
+    margin: 5em;
     align-content: center;
     justify-content: center;
     

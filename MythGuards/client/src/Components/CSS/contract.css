@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .contractPage {
     border: rgb(116, 41, 6) solid 2px;
     outline: 4px solid rgb(116, 41, 6);
@@ -55,9 +50,9 @@ p {
     text-indent: 1em;
 }
 
-a {
+/* a {
     text-decoration: none;
-}
+} */
 
 .contract_edit_button {
     float: right;

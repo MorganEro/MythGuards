@@ -1,18 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 .contract_edit {
     border: rgb(116, 41, 6) solid 2px;
     outline: 4px solid rgb(116, 41, 6);
     outline-offset: 15px;
     width: 925px;
     height: 500px;
-    margin-left: 20vw;
-    margin-top: 10vh;
     align-content: center;
     justify-content: center;
     
@@ -21,7 +15,6 @@
 .contract_edit_form {
     background-image: url('img/12smaller.png');
     background-repeat: no-repeat;
-    margin: 20px;
     font-family: 'Charm', cursive;
     text-align: center;
     color: hwb(38 14% 73% / 0.97);

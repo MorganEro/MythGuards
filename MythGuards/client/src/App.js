@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
-import { NaviBar } from './Components/nav/NaviBar';
-
-import ApplicationViews from './Components/views/ApplicationViews';
+import ApplicationViews from './ApplicationViews';
+import Header from './Components/nav/Header';
 import { onLoginStatusChange, thisUser } from "./modules/authManager";
 
 
@@ -27,8 +26,8 @@ function App() {
 
   return (
     <Router>
-      <NaviBar isLoggedIn={isLoggedIn} user={user} />
-      <AppViews isLoggedIn={isLoggedIn}/>
+      < Header isLoggedIn={isLoggedIn} user={user} />
+      < ApplicationViews isLoggedIn={isLoggedIn} user={user}/>
     </Router>
   );
 }
