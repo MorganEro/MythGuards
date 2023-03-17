@@ -1,51 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Charm&display=swap");
 
 body {
-    background-color: rgb(250, 233, 211);
-    margin: 100px !important;
+  background-color: rgb(250, 233, 211);
+  margin: 100px !important;
 }
 
 .contract_div {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2em;
-    place-content: center;
-    padding: 40px;
-   
-    
-
-   
-  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  place-content: center;
+  padding: 40px;
 }
+
 .contracts {
-    
-    font-family: 'Charm', cursive;
-    background-image: url('img/23.png');
-    background-size: 100%;
-    background-repeat: no-repeat;
-    margin: 8px 0;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: 250px;
-    justify-content: center;
-    text-align: center;
-    color: hwb(38 14% 73% / 0.97);
-    outline: 2px solid rgb(116, 41, 6);
-    outline-offset: 4px;
-    border-style: double;
-    
+  font-family: "Charm", cursive;
+  background-image: url("img/23.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 250px;
+  justify-content: center;
+  text-align: center;
+  color: hwb(38 14% 73% / 0.97);
+  outline: 4px solid rgb(116, 41, 6);
+  outline-offset: 4px;
+  border-style: double;
+}
 
-}
 h5 {
-    font-weight: bold;
+  font-weight: bold;
 }
+
 a:visited {
-    color: purple
+  color: purple;
 }
 
 a:hover {
-    color: darkred;
+  color: darkred;
 }
