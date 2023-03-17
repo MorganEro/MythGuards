@@ -1,53 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Charm&display=swap");
 
 .contractPage {
-    border: rgb(116, 41, 6) solid 2px;
-    outline: 4px solid rgb(116, 41, 6);
-    outline-offset: 15px;
-    width: 925px;
-    height: 500px;
-    margin-left: 20vw;
-    margin-top: 10vh;
-    align-content: center;
-    justify-content: center;
-    
+  border: rgb(116, 41, 6) solid 2px;
+  outline: 4px solid rgb(116, 41, 6);
+  outline-offset: 15px;
+  width: 925px;
+  height: 500px;
+  margin-left: 20vw;
+  margin-top: 10vh;
+  align-content: center;
+  justify-content: center;
 }
 .contract {
-    background-image: url('img/12smaller.png');
-    background-repeat: no-repeat;
-    margin: 20px;
-    font-family: 'Charm', cursive;
-    
-    color: hwb(38 14% 73% / 0.97);
+  background-image: url("img/12smaller.png");
+  background-repeat: no-repeat;
+  margin: 20px;
+  font-family: "Charm", cursive;
+
+  color: hwb(38 14% 73% / 0.97);
 }
 
-
 .contract_terms {
-    margin: 3px 3px;
-    margin-top: 30px;
+  margin: 3px 3px;
+  margin-top: 30px;
 }
 
 h4 {
-    text-align: center;
-    color: rgb(116, 41, 6);
-    padding-top: 20px;
-
-    
+  text-align: center;
+  color: rgb(116, 41, 6);
+  padding-top: 20px;
 }
 .contract_span {
-    display: grid;
-    place-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(3, 1fr);
 }
 .contract_span_items {
-    display: grid;
-    place-content: center;
-    color: hwb(38 14% 73% / 0.97);
+  display: grid;
+  place-content: center;
+  color: hwb(38 14% 73% / 0.97);
 }
 
 p {
-    text-indent: 1em;
+  text-indent: 1em;
 }
 
 /* a {
@@ -55,20 +50,20 @@ p {
 } */
 
 .contract_edit_button {
-    float: right;
-    margin-right: 30px;
-    margin-top: 5px;
-    background-color: antiquewhite;
-    border: 2px rgb(116, 41, 6) solid;
-    width: 55px;
-    text-align: center;
+  float: right;
+  margin-right: 30px;
+  margin-top: 5px;
+  background-color: antiquewhite;
+  border: 2px rgb(116, 41, 6) solid;
+  width: 55px;
+  text-align: center;
 }
 .contract_back_button {
-    float: left;
-    margin-left: 30px;
-    margin-top: 5px;
-    background-color: antiquewhite;
-    border: 2px rgb(116, 41, 6) solid;
-    width: 55px;
-    text-align: center;
+  float: left;
+  margin-left: 30px;
+  margin-top: 5px;
+  background-color: antiquewhite;
+  border: 2px rgb(116, 41, 6) solid;
+  width: 55px;
+  text-align: center;
 }

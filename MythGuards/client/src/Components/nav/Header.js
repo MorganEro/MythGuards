@@ -8,7 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from "reactstrap";
 import { Logout } from "../../modules/authManager";
 
@@ -21,9 +20,21 @@ export default function Header({ isLoggedIn, user }) {
     <div>
       <Navbar  fixed="top" color="light" light expand="lg">
         <NavbarToggler onClick={toggle} />
+        {isLoggedIn 
+        ?
+        <div>
+          <NavbarBrand tag={RRNavLink} to="/">
+            MythGuards
+          </NavbarBrand>
+          <NavbarBrand>
+            Welcome, {user?.displayName}
+          </NavbarBrand> 
+        </div> 
+        :
         <NavbarBrand tag={RRNavLink} to="/">
           MythGuards
-        </NavbarBrand>
+        </NavbarBrand>}
+        
         <Collapse isOpen={isOpen} navbar>
           <Nav justified navbar>
             {isLoggedIn && 
@@ -64,9 +75,7 @@ export default function Header({ isLoggedIn, user }) {
                     Logout
                   </a>
                 </NavItem>
-                <NavbarText>
-                    Welcome, {user?.displayName}
-                </NavbarText>
+               
               </>
             }
             {!isLoggedIn && 
