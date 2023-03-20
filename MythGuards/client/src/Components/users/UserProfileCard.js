@@ -4,6 +4,7 @@ import { onLoginStatusChange, thisUser } from "../../modules/authManager";
 import { AddContract } from "../../modules/contractManager";
 import { GetUserProfileById } from "../../modules/userProfileManager";
 import "../CSS/guardCard.css";
+import { UserProfileEdit } from "./UserProfileEdit";
 
 export const UserProfileCard = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -11,6 +12,7 @@ export const UserProfileCard = () => {
   const [profile, setProfile] = useState({});
   const { userId } = useParams();
   const navigate = useNavigate();
+
 
   useEffect(() => {
     onLoginStatusChange(setIsLoggedIn);
@@ -28,9 +30,6 @@ export const UserProfileCard = () => {
     GetUserProfileById(userId).then(setProfile);
   }, [userId]);
 
-  const EditButton = () => {
-    navigate(`/userProfile/${profile.id}`);
-  };
 
   const ContractButton = () => {
     const newContract = {};
@@ -85,7 +84,7 @@ export const UserProfileCard = () => {
       {profile.id === user?.id || user?.userTypeId === 1 ? (
         <button
           className="guard_profile_edit_button"
-          onClick={(clickEvent) => EditButton(clickEvent)}
+          onClick={ UserProfileEdit}
         >
           Edit
         </button>

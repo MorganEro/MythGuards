@@ -3,6 +3,9 @@ import { DeleteContract, UpdateContract } from '../../modules/contractManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import { GetContractById } from '../../modules/contractManager';
 import "../CSS/contractEdit.css";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
 
 export const ContractEdit = () => {
 
