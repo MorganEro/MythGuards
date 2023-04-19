@@ -17,7 +17,7 @@ export const SearchGuards = () => {
         <FormGroup>
           <Input type="search" name="search" placeholder="Guard Search"  onChange={(e) => setUserSearchText(e.target.value)} />
         </FormGroup>
-        <Button color="secondary" size="sm" onClick={ SearchForGuard }>SEARCH</Button>
+        <Button outline color="secondary" size="sm" onClick={ SearchForGuard }>SEARCH</Button>
       </div>
 
       {Array.isArray(filteredProfiles) &&

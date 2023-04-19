@@ -4,14 +4,12 @@
   border: rgb(116, 41, 6) solid 2px;
   outline: 4px solid rgb(116, 41, 6);
   outline-offset: 15px;
-  width: 925px;
-  height: 500px;
-  align-content: center;
-  justify-content: center;
+
 }
 .contract_edit_form {
-  background-image: url("img/12smaller.png");
-  background-repeat: no-repeat;
+  /* background-image: url("img/12smaller.png");
+  background-size: 100%;
+  background-repeat: no-repeat; */
   font-family: "Charm", cursive;
   text-align: center;
   color: hwb(38 14% 73% / 0.97);
@@ -27,7 +25,8 @@
 .contract_edit_submit {
   float: right;
   margin-right: 30px;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   background-color: antiquewhite;
   border: 2px rgb(116, 41, 6) solid;
   width: 80px;
@@ -40,6 +39,6 @@
   margin-top: 5px;
   background-color: antiquewhite;
   border: 2px rgb(116, 41, 6) solid;
-  width: 55px;
+  width: 70px;
   text-align: center;
 }

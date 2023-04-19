@@ -47,7 +47,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Display Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="name"
                 autoFocus
                 value={oldUser.displayName}
                 onChange={
@@ -62,7 +61,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Age</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="0"
                 autoFocus
                 value={oldUser.age}
                 onChange={
@@ -77,7 +75,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="name@example.com"
                 autoFocus
                 value={oldUser.email}
                 onChange={
@@ -92,7 +89,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="https://address.jpg"
                 autoFocus
                 value={oldUser.imageUrl}
                 onChange={
@@ -107,7 +103,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="tel"
-                placeholder="444-444-4444"
                 autoFocus
                 value={oldUser.phoneNumber}
                 onChange={
@@ -122,7 +117,6 @@ export const UserProfileEdit = () => {
               <Form.Label>Address</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Your Address "
                 autoFocus
                 value={oldUser.address}
                 onChange={

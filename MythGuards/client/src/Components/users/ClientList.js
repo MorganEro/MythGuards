@@ -42,14 +42,14 @@ export const ClientList = () => {
         <FormGroup>
           <Input
             type="search"
-            className="guard_profile_search-wrapper_textInput"
+            className="guard_profile_search-wrapper_textInput mx-2"
             name="search"
             placeholder="Client Search"
             onChange={(e) => setUserSearchText(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" size="sm" onClick={handleBackButton}>
-          BACK
+        <Button className="mx-3" outline color="secondary" size="sm" onClick={handleBackButton}>
+          SHOW ALL
         </Button>
       </div>
 

@@ -29,6 +29,7 @@ body {
   outline: 4px solid rgb(116, 41, 6);
   outline-offset: 4px;
   border-style: double;
+  border-radius: 3%;
 }
 
 h5 {

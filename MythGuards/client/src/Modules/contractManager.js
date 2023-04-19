@@ -12,6 +12,18 @@ export const GetContractsList = () => {
     }).then(res => res.json())
     })
 }
+
+export const GetUserContractsList = (userId) => {
+  return getToken().then((token) => {
+    return fetch(apiUrl + userId, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(res => res.json())
+  })
+}
+
      
 
 

@@ -1,25 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "../CSS/welcome.css";
-import { thisUser, onLoginStatusChange } from '../../modules/authManager';
 
+import "../CSS/welcome.css";
 
 export default function Welcome() {
-
-  const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
-  useEffect(() => {
-    onLoginStatusChange(setIsLoggedIn);
-  }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      thisUser().then(setUser);
-    } else {
-      setUser(null);
-    }
-  }, [isLoggedIn]);
-
-
 
   return (
       <div className="welcome">

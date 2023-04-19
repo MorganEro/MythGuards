@@ -40,9 +40,6 @@ export default function Login() {
         <FormGroup>
           <Button>Login</Button>
         </FormGroup>
-        <em>
-          Not registered? <Link to="/register">Register</Link>
-        </em>
       </fieldset>
     </Form>
   );

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Policy;
 
 namespace MythGuards.Models
@@ -15,6 +16,7 @@ namespace MythGuards.Models
         public int ServiceTypeId { get; set; }
 
         public ServiceType ServiceType { get; set; }
+        [MaxLength(65)]
         public string Details { get; set; }
         public bool IsActive { get; set; }
     }

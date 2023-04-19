@@ -9,7 +9,7 @@ namespace MythGuards.Models
     {
         public int Id { get; set; }
 
-        [Required]
+       
         [MaxLength(20)]
         public string DisplayName { get; set; }
 
@@ -25,8 +25,8 @@ namespace MythGuards.Models
         public string Email { get; set; }
 
         public string ImageUrl { get; set; }
-        [Required]
-        public string PHoneNumber { get; set; }
+     
+        public string PhoneNumber { get; set; }
 
         
         public string Address { get; set; }
@@ -41,6 +41,8 @@ namespace MythGuards.Models
 
         [StringLength(28, MinimumLength = 28)]
         public string FirebaseUserId { get; set; }
+
+        public Contract Contract { get; set; }
 
     }
 }

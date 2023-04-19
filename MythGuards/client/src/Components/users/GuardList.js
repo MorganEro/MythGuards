@@ -45,20 +45,20 @@ export const GuardList = () => {
     <div className="profiles-page-all">
       <Button color= "primary" size="sm" className="topOfPage" onClick= {scrollUp}>Top Of Page</Button> 
       <div className="guard_profile_search-wrapper">
-        <Button color="secondary" size="sm" onClick={SearchForGuard}>
+        <Button  color="secondary" size="sm" onClick={SearchForGuard}>
           SEARCH
         </Button>
         <FormGroup>
           <Input
             type="search"
-            className="guard_profile_search-wrapper_textInput"
+            className="guard_profile_search-wrapper_textInput mx-2"
             name="search"
             placeholder="Guard Search"
             onChange={(e) => setUserSearchText(e.target.value)}
           />
         </FormGroup>
-        <Button color="primary" size="sm" onClick={handleBackButton}>
-          BACK
+        <Button className="mx-3" outline color="secondary" size="sm" onClick={handleBackButton}>
+         SHOW ALL
         </Button>
       </div>
 

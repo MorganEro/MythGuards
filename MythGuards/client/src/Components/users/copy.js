@@ -1,150 +1,126 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import { NavLink as RRNavLink } from "react-router-dom";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from "reactstrap";
+import { Logout } from "../../modules/authManager";
 
-function Example() {
-  const [show, setShow] = useState(false);
+export default function Header({ isLoggedIn, user }) {
+  const toggle = () => setIsOpen(!isOpen);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
+    <div>
+      <Navbar fixed="top" color="light" light expand="lg">
+        <NavbarToggler onClick={toggle} />
+        {isLoggedIn &&
+          <>
+            <Collapse isOpen={isOpen} navbar>
+              <div>
+                <NavbarBrand tag={RRNavLink} to="/">
+                  MythGuards
+                </NavbarBrand>
+                <NavbarBrand>Welcome, {user?.displayName}</NavbarBrand>
+              </div>
+              {user.serviceTypeId === 1 ? (
+                <Nav justified navbar>
+                  <>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/userProfile/guard">
+                        Guards
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/contract/create">
+                        ContractForm
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/contract">
+                        Contracts
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/userProfile/all">
+                        AllUsers
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/userProfile/client">
+                        Clients
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <a
+                        aria-current="page"
+                        className="nav-link"
+                        style={{ cursor: "pointer" }}
+                        onClick={Logout}
+                      >
+                        Logout
+                      </a>
+                    </NavItem>
+                  </>
+                </Nav>
+              ) : (
+                <Nav justified navbar>
+                  <>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/userProfile/guard">
+                        Guards
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/contract/create">
+                        ContractForm
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink tag={RRNavLink} to="/contract">
+                        Contracts
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <a
+                        aria-current="page"
+                        className="nav-link"
+                        style={{ cursor: "pointer" }}
+                        onClick={Logout}
+                      >
+                        Logout
+                      </a>
+                    </NavItem>
+                  </>
+                </Nav>
+              )}
+            </Collapse>
+          </>
+        }
+        {!isLoggedIn &&
+        <>
+        <Nav justified navbar>
+        <NavbarBrand tag={RRNavLink} to="/">
+            MythGuards
+          </NavbarBrand>
+           <NavItem>
+           <NavLink tag={RRNavLink} to="/userProfile/guard">
+             Guards
+           </NavLink>
+         </NavItem>
 
-      <div className='userProfile_edit_form_inputs'>
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="displayName">New DisplayName? : </label>
-                            <input
-                                required autoFocus
-                                type="text"
-                                className=" "
-                                value={oldUser.displayName}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.displayName = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset>
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="age">Age Changed? : </label>
-                            <input
-                                required autoFocus
-                                type="number"
-                                className=""
-                                value={oldUser.age}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.age= evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset>
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="email">New Email? :</label>
-                            <input
-                                required autoFocus
-                                type="email"
-                                className=""
-                                value={oldUser.email}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.email = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset> 
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field_imageUrl">
-                            <label htmlFor="imageUrl">New Profile Picture? Add a url:</label>
-                            <input
-                                required autoFocus
-                                type="text"
-                                className=""
-                                value={oldUser.imageUrl}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.imageUrl = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                            } />
-                        </div>
-                    </fieldset> 
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="phoneNumber">New Phone Number? :</label>
-                            <input
-                                required autoFocus
-                                type="tel"
-                                className=""
-                                value={oldUser.phoneNumber}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.phoneNumber = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset>
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="address">Have you moved? :</label>
-                            <input
-                                required autoFocus
-                                type="text"
-                                className=""
-                                value={oldUser.address}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.address = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset>
-                    <div>&nbsp;</div>
-                    <fieldset>
-                        <div className="userProfile_edit_field">
-                            <label htmlFor="details">More to share? :</label>
-                            <input
-                                required autoFocus
-                                type="text"
-                                className=""
-                                value={oldUser.details}
-                                onChange={
-                                    (evt) => {
-                                        const copy = {...oldUser}
-                                        copy.details = evt.target.value
-                                        setOldUser(copy)
-                                    }
-                                } />
-                        </div>
-                    </fieldset>
-                </div>
-    </>
+        </Nav>
+        </>
+          
+          
+        }
+      </Navbar>
+    </div>
   );
 }
-
-render(<Example />);

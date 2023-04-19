@@ -1,37 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AddContract } from "../../modules/contractManager";
-import { useNavigate, useParams } from "react-router-dom";
-import { thisUser, onLoginStatusChange } from "../../modules/authManager";
+import { useNavigate, useParams} from "react-router-dom";
 import "../CSS/contractForm.css";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 
 export const ContractForm = () => {
-  // const { id } = useParams();
-  // const contractId = parseInt(id);
   const date = new Date();
   const navigate = useNavigate();
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const { userId } = useParams();
 
-  useEffect(() => {
-    onLoginStatusChange(setIsLoggedIn);
-  }, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      thisUser().then(setUser);
-    } else {
-      setUser(null);
-    }
-  }, [isLoggedIn]);
 
-  console.log(user);
 
   const [contract, setContract] = useState({
-    UserProfileId: 1,
-    GuardId: 2,
+  
+    GuardId: userId,
     ServiceTypeId: 0,
     RequestedStartingDate: "",
     RequestedEndingDate: "",
@@ -40,7 +25,7 @@ export const ContractForm = () => {
   });
 
   const handleSubmitContractButtonClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const d1 = date;
     const d2 = new Date(contract.RequestedStartingDate);
@@ -50,11 +35,8 @@ export const ContractForm = () => {
     } else {
       contract.IsActive = false;
     }
-      contract.UserProfileId = user?.id;
-      AddContract(contract);
-      console.log("Contract Added!");
-      navigate("/contract");
-
+    AddContract(contract);
+    navigate("/contract/list");
   };
 
   const BackButton = () => {
@@ -181,33 +163,43 @@ export const ContractForm = () => {
           </div>
         </fieldset>
         <div>&nbsp;</div>
-        <button
-          className="contract_form_submit"
-          onClick={toggle}
+        {contract.RequestedEndingDate === "" ||
+        contract.RequestedStartingDate === "" ||
+        contract.ServiceTypeId === "" ? (
+          <Button outline className="contract_form_submit">
+            Complete Contract
+          </Button>
+        ) : (
+          <Button outline className="contract_form_submit" onClick={toggle}>
+            Submit Contract
+          </Button>
+        )}
+
+        <Modal
+          isOpen={modal}
+          toggle={toggle}
         >
-          Submit Contract
-        </button>
-        <Modal isOpen={modal}>
           <ModalBody>
-            You are about to enter into this binding agreement. Are you ready?
+            You are about to enter into this binding agreement. Are you sure?
           </ModalBody>
           <ModalFooter>
-            <Button
-              onClick={
-                (clickEvent) => handleSubmitContractButtonClick(clickEvent)
+            <Button outline
+              onClick={(clickEvent) =>
+                handleSubmitContractButtonClick(clickEvent)
               }
             >
               ACCEPT
             </Button>
-            <Button onClick={toggle}>CANCEL</Button>
+            <Button outline onClick={toggle}>CANCEL</Button>
           </ModalFooter>
         </Modal>
-        <button
+        <Button
+          outline
           className="contract_form_back"
           onClick={(clickEvent) => BackButton(clickEvent)}
         >
           Back
-        </button>
+        </Button>
       </form>
     </div>
   );
