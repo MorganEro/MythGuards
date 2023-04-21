@@ -41,6 +41,7 @@ export default function Header({ isLoggedIn, user }) {
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar className="mx-auto">
             {isLoggedIn && (
+              user?.userTypeId === 1 ? 
               <>
                 <NavItem className="mx-3">
                   <NavLink tag={RRNavLink} to="/userProfile/all">
@@ -61,8 +62,35 @@ export default function Header({ isLoggedIn, user }) {
                   <NavLink tag={RRNavLink} to="/contract/list">
                     Contracts
                   </NavLink>
+                </NavItem>          
+                <NavItem className="mx-4">
+                  <a
+                    aria-current="page"
+                    className="nav-link"
+                    style={{ cursor: "pointer" }}
+                    onClick={Logout}
+                  >
+                    Logout
+                  </a>
                 </NavItem>
-
+              </>
+            :
+               <>
+                <NavItem className="mx-3">
+                  <NavLink tag={RRNavLink} to="/userProfile/guard">
+                    Guards
+                  </NavLink>
+                </NavItem>
+                <NavItem className="mx-3">
+                  <NavLink tag={RRNavLink} to="/userProfile/details/:userId">
+                    My Profile
+                  </NavLink>
+                </NavItem>
+                <NavItem className="mx-3">
+                  <NavLink tag={RRNavLink} to="/contract/list">
+                    Contracts
+                  </NavLink>
+                </NavItem>          
                 <NavItem className="mx-4">
                   <a
                     aria-current="page"

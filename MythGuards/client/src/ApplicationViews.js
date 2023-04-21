@@ -31,7 +31,7 @@ export default function ApplicationViews({ isLoggedIn, user }) {
                   <Route path = "userProfile/guard" element ={isLoggedIn ? < GuardList /> : <Navigate to="/login" />}/>
                   <Route path = "userProfile/client" element ={isLoggedIn ? < ClientList /> : <Navigate to="/login" />}/>
                   <Route path = "userProfile/all" element ={isLoggedIn ? < AllUserList /> : <Navigate to="/login" />}/>
-                  <Route path = "userProfile/details/:userId" element ={isLoggedIn ? < UserProfileEdit/> : <Navigate to="/login" />}/>
+                  <Route path = "userProfile/Edit/:userId" element ={isLoggedIn ? < UserProfileEdit/> : <Navigate to="/login" />}/>
                 
                 <Route index element={< Welcome/> }/>
                 <Route path="login" element={!isLoggedIn ? < Login />: ""} />
