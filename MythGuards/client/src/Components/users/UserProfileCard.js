@@ -73,7 +73,6 @@ export const UserProfileCard = ({user}) => {
       {profile.id === user.id || user.userTypeId === 1 ? (
         <Button
         outline color="secondary"
-          // show = {show}
           className="guard_profile_edit_button"
           onClick={handleShow}
         >
